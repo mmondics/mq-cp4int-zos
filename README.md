@@ -23,7 +23,7 @@ IBM MQ on Cloud Pak for Integration is delivered as an operator and can be insta
 1. Navigate to Operators -> OperatorHub -> search for IBM MQ and ensure that you are in the correct project where you want IBM MQ to be deployed.
 ![OperatorHub Search](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-10-37-34.png)
 
-    *Note: If you do not see IBM MQ in the search results, you might not have the correct CatalogSource instsalled on your OpenShift cluster. It can be created with the following YAML file.*
+    *Note: If you do not see IBM MQ in the search results, you might not have the correct CatalogSource instsalled on your OpenShift cluster. It can be created with the following YAML file (also provided in this GitHub repository).*
 
     ```YAML
     apiVersion: operators.coreos.com/v1alpha1
@@ -58,7 +58,7 @@ You now have the ability to create a containerized queue manager on Cloud Pak fo
 1. Create and edit a file named externalqmgr.yaml with the command
 
     `vi externalqmgr.yaml`
-1. Paste the following YAML file that will create a ConfigMap, Secret, QueueManager, and Route.
+1. Paste the following YAML file that will create a ConfigMap, Secret, QueueManager, and Route (also provided in this GitHub repository)
 
     ````YAML
     kind: ConfigMap
