@@ -1,0 +1,73 @@
+    kind: ConfigMap
+    apiVersion: v1
+    metadata:
+    name: mqexternalmqsc
+    namespace: <YOUR_PROJECT>
+    data:
+    mqexternal.mqsc: |-
+        define ql(APPQ)
+        DEFINE CHANNEL('<YOUR_CHANNEL_NAME>') CHLTYPE(RCVR) TRPTYPE(TCP) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER') 
+        set chlauth('<YOUR_CHANNEL_NAME>') TYPE(BLOCKUSER) USERLIST(NOBODY)
+        REFRESH SECURITY TYPE(CONNAUTH)
+    ---
+    kind: Secret
+    apiVersion: v1
+    metadata:
+    name: mqexternalqmgrcert
+    namespace: <YOUR_PROJECT>
+    data:
+    tls.crt: <YOUR_TLS_CRT>
+    tls.key: <YOUR_TLS_KEY>
+    type: Opaque
+    ---
+    apiVersion: mq.ibm.com/v1beta1
+    kind: QueueManager
+    metadata:
+    name: externalmq
+    namespace: <YOUR_PROJECT>
+    spec:
+    version: <MQ_VERSION>
+    license:
+        accept: true
+        license: <MQ_LICENSE>
+        use: "NonProduction"
+    pki:
+        keys:
+        - name: default
+        secret:
+            secretName: mqexternalqmgrcert
+            items:
+            - tls.key
+            - tls.crt
+    web:
+        enabled: true
+    queueManager:
+        type: ephemeral
+        mqsc:
+        - configMap:
+            name: mqexternalmqsc
+            items:
+                - mqexternal.mqsc
+    template:
+        pod:
+        containers:
+            - env:
+                - name: MQSNOAUT
+                value: 'yes'
+            name: qmgr
+    ---
+    kind: Route
+    apiVersion: route.openshift.io/v1
+    metadata:
+    name: mq-traffic-mq-externalqmgr-ibm-mq-qm
+    namespace: <YOUR_PROJECT>
+    spec:
+    host: '<SNI_ADDRESS_MAPPING_FOR_THE_CHANNEL>'
+    to:
+        kind: Service
+        name: externalmq-ibm-mq
+    port:
+        targetPort: 1414
+    tls:
+        termination: passthrough
+    wildcardPolicy: None
