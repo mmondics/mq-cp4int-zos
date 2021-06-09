@@ -4,7 +4,7 @@
 
 1. OpenShift 4.6.x installed
 2. OpenShift command line (oc) installed
-3. Cloud Pak for Integration 2020.3.1 installed
+3. Cloud Pak for Integration installed
 4. IBM MQ on z/OS Installed
 5. Queue manager, transmission queue, and listener all configured on MQ on z/OS with TLS 1.2 or higher.
 6. MQ Explorer installed on your local workstation
@@ -23,7 +23,7 @@ IBM MQ on Cloud Pak for Integration is delivered as an operator and can be insta
 1. Navigate to Operators -> OperatorHub -> search for IBM MQ and ensure that you are in the correct project where you want IBM MQ to be deployed.
 ![OperatorHub Search](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-10-37-34.png)
 
-    *Note: If you do not see IBM MQ in the search results, you might not have the correct CatalogSource instsalled on your OpenShift cluster. It can be created with the following YAML file (also provided in this GitHub repository).*
+    *Note: If you do not see IBM MQ in the search results, you might not have the correct CatalogSource installed on your OpenShift cluster. It can be created with the following YAML file (also provided in this GitHub repository).*
 
     ```YAML
     apiVersion: operators.coreos.com/v1alpha1
@@ -42,7 +42,7 @@ IBM MQ on Cloud Pak for Integration is delivered as an operator and can be insta
     ```
 
 1. Click on the IBM MQ tile and click the Install button.
-1. Select the update channel that is supported by your version of Cloud Pak for Integration and OpenShift. [Refer here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=containers-version-support-mq-operator)
+1. Select the update channel that is supported by your version of Cloud Pak for Integration and OpenShift. [Refer here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=containers-version-support-mq-operator).
 1. Choose your installation mode and approval strategy based on your cluster and preferences.
 1. Click Install.
 
@@ -54,13 +54,13 @@ You now have the ability to create a containerized queue manager on Cloud Pak fo
 ### Create a Queue Manager from YAML file
 
 1. In the OpenShift console, copy your login command by clicking on your username in the top right corner -> Copy Login Command -> enter your credentials -> Display Token -> copy the `oc login` command.
-1. In a terminal session where the `oc` commmand line is installed, paste the `oc login` command and press enter.
+1. In a terminal session where the `oc` command line is installed, paste the `oc login` command and press enter.
 1. Create and edit a file named externalqmgr.yaml with the command
 
     `vi externalqmgr.yaml`
-1. Paste the following YAML file that will create a ConfigMap, Secret, QueueManager, and Route (also provided in this GitHub repository)
+1. Paste the following YAML file that will create a ConfigMap, Secret, QueueManager, and Route (also provided in this GitHub repository).
 
-    ````YAML
+    ```YAML
     kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -198,7 +198,7 @@ If your Queue Manager and Pod are *Running* and you do not see any concerning er
     mq-traffic-mq-externalqmgr-ibm-mq-qm   icp12e-74-6f-2e-61-74-73-6f-63-70-64-1.chl.mq.ibm.com
     ```
 
-    Copy the HOST associated with the integration-navigator-pn route - in my case, it is integration-navigator-pn-atg-cp4i.apps.atsocpd1.dmz.
+    Copy the HOST associated with the integration-navigator-pn route. In my case, it is `integration-navigator-pn-atg-cp4i.apps.atsocpd1.dmz`.
 
     Navigate to `http://<YOUR_HOST>` in a web browser.
 
@@ -211,12 +211,14 @@ If your Queue Manager and Pod are *Running* and you do not see any concerning er
     ![IBM MQ Dashboard](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-16-53.png)
 1. Click on the *Manage externalmq* tile on the left side of the page.
     ![Manage externalmq](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-26-32.png)
-    On this page, you can see the local queue named APPQ, which was defined in the ConfigMap portion of the YAML file. There are no messages in this queue yet.
+    On this page, you can see the local queue named APPQ, which was defined in the ConfigMap portion of the YAML file:
 
     ```YAML
     define ql(APPQ)
     ```
-
+   
+   There are no messages in this queue yet.
+   
 1. Click on the *Communication* tab to the right of Queues, and then click on the *Queue Manager Channels* in the left side menu.
     ![qmgr channels](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-34-57.png)
     On this page, you can see the Receiver channel that you defined in the ConfigMap portion of the YAML file:
@@ -229,7 +231,7 @@ With the queue manager, local queue, listener and receiver channel configured, w
 
 ### Put Test Message from IBM MQ Explorer
 
-Open your IBM Q Explorer session and connect to the queue manager running on z/OS.
+Open your IBM MQ Explorer session and connect to the queue manager running on z/OS.
 
 1. Create a sender channel by right clicking Channels -> New -> Sender Channel.
     ![New sender channel](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-14-56-01.png)
@@ -273,7 +275,7 @@ Open your IBM Q Explorer session and connect to the queue manager running on z/O
 
 1. Right click on the remote queue you just created and select *Put Test Message*.
 
-1. Type your message in for *Message data* nad press the *Put message* button, then click *Close*
+1. Type your message in for *Message data* and press the *Put message* button, then click *Close*
 
     ![Put Test](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-16-23-19.png)
 
@@ -281,7 +283,7 @@ Open your IBM Q Explorer session and connect to the queue manager running on z/O
 
     ![APPQ](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-16-25-00.png)
 
-You will see your test message appear in the APPQ local queue, and you have successfull passed a message from an IBM MQ sender channel on z/OS to IBM MQ receiver channel on OpenShift via IBM Cloud Pak for Integration.
+You will see your test message appear in the APPQ local queue, and you have successful passed a message from an IBM MQ sender channel on z/OS to an IBM MQ receiver channel on OpenShift via IBM Cloud Pak for Integration.
 
 ### Generate Messages from Java Application on z/OS (application not provided - demo only)
 
