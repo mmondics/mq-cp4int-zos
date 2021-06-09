@@ -1,4 +1,3 @@
-# mq-cp4int-zos
 # Creating an IBM MQ Channel Between IBM Cloud Pak for Integration on IBM Z and Traditional z/OS
 
 ## Prerequisites
