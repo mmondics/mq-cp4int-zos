@@ -22,7 +22,7 @@ IBM MQ on Cloud Pak for Integration is delivered as an operator and can be insta
 
 1. Log into OpenShift. Ensure that your credentials allow for the installation of operators into your project of choice.
 1. Navigate to Operators -> OperatorHub -> search for IBM MQ and ensure that you are in the correct project where you want IBM MQ to be deployed.
-![OperatorHub Search](2021-06-07-10-37-34.png)
+![OperatorHub Search](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-10-37-34.png)
 
     *Note: If you do not see IBM MQ in the search results, you might not have the correct CatalogSource instsalled on your OpenShift cluster. It can be created with the following YAML file.*
 
@@ -48,7 +48,7 @@ IBM MQ on Cloud Pak for Integration is delivered as an operator and can be insta
 1. Click Install.
 
 Wait for the operator to successfully install.
-![Operator Installed](2021-06-07-10-45-45.png)
+![Operator Installed](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-10-45-45.png)
 
 You now have the ability to create a containerized queue manager on Cloud Pak for Integration.
 
@@ -203,15 +203,15 @@ If your Queue Manager and Pod are *Running* and you do not see any concerning er
 
     Navigate to `http://<YOUR_HOST>` in a web browser.
 
-    ![CP4Int Console Login](2021-06-07-17-13-58.png)
+    ![CP4Int Console Login](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-17-13-58.png)
 1. Log in with your OpenShift credentials.
 1. Click on the *Runtimes* tab and you will see the Queue Manager named externalmq that you created in the command line.
-    ![CP4Int Runtimes](2021-06-07-17-17-35.png)
+    ![CP4Int Runtimes](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-17-17-35.png)
 1. Click on the *externalmq* link to open the dashboard for your IBM MQ instance.
     *Note: you may need to log in with your OpenShift credentials again.*
-    ![IBM MQ Dashboard](2021-06-08-10-16-53.png)
+    ![IBM MQ Dashboard](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-16-53.png)
 1. Click on the *Manage externalmq* tile on the left side of the page.
-    ![Manage externalmq](2021-06-08-10-26-32.png)
+    ![Manage externalmq](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-26-32.png)
     On this page, you can see the local queue named APPQ, which was defined in the ConfigMap portion of the YAML file. There are no messages in this queue yet.
 
     ```YAML
@@ -219,7 +219,7 @@ If your Queue Manager and Pod are *Running* and you do not see any concerning er
     ```
 
 1. Click on the *Communication* tab to the right of Queues, and then click on the *Queue Manager Channels* in the left side menu.
-    ![qmgr channels](2021-06-08-10-34-57.png)
+    ![qmgr channels](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-34-57.png)
     On this page, you can see the Receiver channel that you defined in the ConfigMap portion of the YAML file:
 
     ```YAML
@@ -233,7 +233,7 @@ With the queue manager, local queue, listener and receiver channel configured, w
 Open your IBM Q Explorer session and connect to the queue manager running on z/OS.
 
 1. Create a sender channel by right clicking Channels -> New -> Sender Channel.
-    ![New sender channel](2021-06-08-14-56-01.png)
+    ![New sender channel](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-14-56-01.png)
 1. Enter the following values for channel parameters:
 
     * Name: the same name you used for <YOUR_CHANNEL_NAME> in the YAML file.
@@ -253,9 +253,9 @@ Open your IBM Q Explorer session and connect to the queue manager running on z/O
 
     The channel should now have a *Running* status, and if you go back to the Cloud Pak for Integration IBM MQ console, the associated Receiver channel should also be *Running*.
 
-    ![Start Sender](2021-06-08-15-38-38.png)
+    ![Start Sender](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-15-38-38.png)
 
-    ![Running Receiver](2021-06-08-15-40-38.png)
+    ![Running Receiver](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-15-40-38.png)
 
     ***IF this is not the case, stop here and debug the channel connection until both are Running.***
 
@@ -276,11 +276,11 @@ Open your IBM Q Explorer session and connect to the queue manager running on z/O
 
 1. Type your message in for *Message data* nad press the *Put message* button, then click *Close*
 
-    ![Put Test](2021-06-08-16-23-19.png)
+    ![Put Test](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-16-23-19.png)
 
 1. Go back to the Cloud Pak for Integration IBM MQ console and open the APPQ local queue.
 
-    ![APPQ](2021-06-08-16-25-00.png)
+    ![APPQ](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-16-25-00.png)
 
 You will see your test message appear in the APPQ local queue, and you have successfull passed a message from an IBM MQ sender channel on z/OS to IBM MQ receiver channel on OpenShift via IBM Cloud Pak for Integration.
 
@@ -303,6 +303,6 @@ If I submit a job from z/OS with the following JCL:
 
 And then look back at the APPQ messages in the IBM MQ on Cloud Pak for Integration console, I see the generated messages.
 
-![Quote Message](2021-06-08-22-19-26.png)
+![Quote Message](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-22-19-26.png)
 
 This is a very simple example of the types of application messages you can send to your containerized queue manager running on Cloud Pak for Integration. For more examples and sample applications, [refer here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=mq-developing-applications).
