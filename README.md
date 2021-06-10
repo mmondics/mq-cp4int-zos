@@ -11,7 +11,7 @@
 
 ## Purpose of Demonstration
 
-This demonstration will show how easily one can install IBM MQ on Cloud Pak for Integration and configure a channel to communicate with IBM MQ running on traditional z/OS. This demonstration assumes that Cloud Pak for Integration is installed on Red Hat OpenShift, and that IBM MQ is installed and configured on z/OS.
+This demonstration will show how easily one can install IBM MQ on Cloud Pak for Integration and configure a channel to communicate with IBM MQ running on traditional z/OS. This demonstration assumes that Cloud Pak for Integration is installed on Red Hat OpenShift, and that IBM MQ is installed and a queue manager is configured on z/OS.
 
 ## Demo Steps
 
