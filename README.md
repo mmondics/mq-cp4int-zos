@@ -47,7 +47,7 @@ IBM MQ on Cloud Pak for Integration is delivered as an operator and can be insta
 1. Click Install.
 
 Wait for the operator to successfully install.
-![Operator Installed](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-10-45-45.png)
+![Operator Installed](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/Screen%20Shot%202021-06-10%20at%205.06.12%20PM.png)
 
 You now have the ability to create a containerized queue manager on Cloud Pak for Integration.
 
