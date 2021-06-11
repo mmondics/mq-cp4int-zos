@@ -202,7 +202,7 @@ If your Queue Manager and Pod are *Running* and you do not see any concerning er
 
     Navigate to `http://<YOUR_HOST>` in a web browser.
 
-    ![CP4Int Console Login](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-17-13-58.png)
+    ![CP4Int Console Login](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/Screen%20Shot%202021-06-11%20at%209.15.39%20AM.png)
 1. Log in with your OpenShift credentials.
 1. Click on the *Runtimes* tab and you will see the Queue Manager named externalmq that you created in the command line.
     ![CP4Int Runtimes](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-07-17-17-35.png)
