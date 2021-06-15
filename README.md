@@ -1,5 +1,7 @@
 # Creating an IBM MQ Channel Between IBM Cloud Pak for Integration on IBM Z and Traditional z/OS
 
+You can find a video of this demonstration here: https://www.youtube.com/watch?v=5w5IuprqMuc
+
 ## Prerequisites
 
 1. OpenShift 4.6.x installed
