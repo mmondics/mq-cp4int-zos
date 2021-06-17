@@ -1,6 +1,6 @@
 # Creating an IBM MQ Channel Between IBM Cloud Pak for Integration on IBM Z and Traditional z/OS
 
-You can find a video of this demonstration here: https://www.youtube.com/watch?v=5w5IuprqMuc
+You can find a video of this demonstration here: <https://youtu.be/zqFAugjXZrA>
 
 ## Prerequisites
 
@@ -218,9 +218,9 @@ If your Queue Manager and Pod are *Running* and you do not see any concerning er
     ```YAML
     define ql(APPQ)
     ```
-   
+
    There are no messages in this queue yet.
-   
+
 1. Click on the *Communication* tab to the right of Queues, and then click on the *Queue Manager Channels* in the left side menu.
     ![qmgr channels](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-10-34-57.png)
     On this page, you can see the Receiver channel that you defined in the ConfigMap portion of the YAML file:
@@ -243,6 +243,7 @@ Open your IBM MQ Explorer session and connect to the queue manager running on z/
     * Transmission protocol: TCP
     * Connection name: <YOUR_BASTION_IP>(443)
         * *You can find this by logging onto the OpenShift cluster's bastion node and running `ifconfig -a`, or by asking your system administrator*
+        * *443 is the default https port for the OpenShift router*
     * Transmission queue: <YOUR_TRANSMISSION_QUEUE>
         * *Look at the Queues section of your z/OS queue manager, or ask your system administrator*
     * SSL Cipher Spec: <YOUR_SSL_CIPHER>
@@ -254,7 +255,7 @@ Open your IBM MQ Explorer session and connect to the queue manager running on z/
 
 1. Right click on the sender channel and select *Start*.
 
-    The channel should now have a *Running* status, and if you go back to the Cloud Pak for Integration IBM MQ console, the associated Receiver channel should also be *Running*.
+    The channel should now have a *Running* status, and if you go back to the Cloud Pak for Integration IBM MQ console, the associated Receiver channel should also be *Running*. This indicates that there is a channel connection between the MQ on z/OS queue manager and the MQ on Cloud Pak for Integration queue manager.
 
     ![Start Sender](https://github.com/mmondics/mq-cp4int-zos/blob/main/Images/2021-06-08-15-38-38.png)
 
