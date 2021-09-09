@@ -139,13 +139,13 @@ You now have the ability to create a containerized queue manager on Cloud Pak fo
     ```
 
 1. Modify the YAML file to suit your environment. There are various portions of the YAML file above that need to be modified:
-    * <YOUR_PROJECT> : Change to the name of your project where the queue manager will be deployed
-    * <YOUR_CHANNEL_NAME> : Change to the receiver channel name. This should match the IBM MQ sender channel on the z/OS system.
-    * <YOUR_TLS_CRT> : Change to the base64 encoded tls.crt that matches the tls.crt of the IBM MQ on z/OS queue manager.
-    * <YOUR_TLS_KEY> : Change to the base64 encoded tls.key that matches the tls.key of the IBM MQ on z/OS queue manager.
-    * <MQ_VERSION> : Change to the IBM MQ version and ensure that it matches the IBM MQ update channel you selected earlier and is supported with your CP4Int and OpenShift versions. [Refer here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=containers-version-support-mq-operator).
-    * <MQ_LICENSE> : Change to the IBM MQ license that supports your MQ_VERSION and Cloud Pak for Integration version. [Refer Here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=mqibmcomv1beta1-licensing-reference).
-    * <SNI_ADDRESS_MAPPING_FOR_THE_CHANNEL> : You must map the channel name to the SNI address. [Refer here](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=containers-connecting-queue-manager-deployed-in-openshift-cluster).
+    * `<YOUR_PROJECT>` : Change to the name of your project where the queue manager will be deployed
+    * `<YOUR_CHANNEL_NAME>` : Change to the receiver channel name. This should match the IBM MQ sender channel on the z/OS system.
+    * `<YOUR_TLS_CRT>` : Change to the base64 encoded tls.crt that matches the tls.crt of the IBM MQ on z/OS queue manager.
+    * `<YOUR_TLS_KEY>` : Change to the base64 encoded tls.key that matches the tls.key of the IBM MQ on z/OS queue manager.
+    * `<MQ_VERSION>` : Change to the IBM MQ version and ensure that it matches the IBM MQ update channel you selected earlier and is supported with your CP4Int and OpenShift versions. [Refer here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=containers-version-support-mq-operator).
+    * `<MQ_LICENSE>` : Change to the IBM MQ license that supports your MQ_VERSION and Cloud Pak for Integration version. [Refer Here](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=mqibmcomv1beta1-licensing-reference).
+    * `<SNI_ADDRESS_MAPPING_FOR_THE_CHANNEL>` : You must map the channel name to the SNI address. [Refer here](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=containers-connecting-queue-manager-deployed-in-openshift-cluster).
 
 1. Create the objects defined in the YAML file with the command:
 
